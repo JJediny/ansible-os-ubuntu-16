@@ -24,6 +24,14 @@
 
 - name: "1.6.3 | Ensure SELinux or AppArmor are installed"
   apt:
+      name: apparmor-utils
+      state: present
+  when: ubu16gsa_config_apparmor == true
+  tags:
+      - id_1.6.3_apparmor
+
+- name: "1.6.3 | Ensure SELinux or AppArmor are installed"
+  apt:
       name: selinux
       state: present
   when: ubu16gsa_config_selinux == true
