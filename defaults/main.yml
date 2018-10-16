@@ -1,5 +1,5 @@
 ---
-# defaults file for Ubuntu14
+# defaults file for Ubuntu16
 ubu16gsa_section1: true
 ubu16gsa_section2: true
 ubu16gsa_section3: true
