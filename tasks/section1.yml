@@ -150,14 +150,13 @@
       ignoreerrors: yes
   tags:
       - id_1.5.1
-
 - name: "1.5.1 | Creates cron job to load sysctl"
   cron:
     name: "Load sysctl"
     special_time: reboot
     value: "sleep 15; /sbin/sysctl -p"
   tags:
-      - id_1.5.1
+      - id_1.5.1      
 
 - name: "1.5.3 | Ensure address space layout randomization (ASLR) is enabled"
   sysctl:
