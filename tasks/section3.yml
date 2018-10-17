@@ -157,15 +157,19 @@
   tags:
       - id_3.3.2
 
-- name: "3.3.3 | Ensure IPv6 is disabled"
+- name: "3.3.3 & 1.4.3 | Ensure IPv6 is disabled"
   lineinfile: >
       dest=/etc/default/grub
-      line='GRUB_CMDLINE_LINUX="ipv6.disable=1"'
+      regexp='^GRUB_CMDLINE_LINUX="audit=1 ipv6.disable=1"'
+      line='GRUB_CMDLINE_LINUX="audit=1 ipv6.disable=1"'
       state=present
-      create=yes
-  when: ubu16gsa_ipv6_disable == true
+  register: grub_config_change
   tags:
       - id_3.3.3
+
+- name: "3.3.3 | Update grub if the config file is changed"
+  shell: update-grub
+  when: grub_config_change.changed == true
 
 - name: "3.4.4 | Ensure permissions on /etc/hosts.allow are 644"
   file:
