@@ -334,6 +334,17 @@
   tags:
     - id_5.4.4
 
+- name: "5.4.4 Set Default umask for Users"
+  lineinfile:
+    state=present
+    create=yes
+    dest=/etc/bash.bashrc
+    line="umask 027"
+  ignore_errors: true
+  tags:
+    - id_5.4.4
+
+
 - name: "5.6 | Ensure access to the su command is restricted"
   lineinfile:
     dest: /etc/pam.d/su
